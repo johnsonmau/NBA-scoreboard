@@ -183,7 +183,6 @@ if __name__=='__main__':
         while True:
             live_prev = 0
             live = Render().Render_Games()
-            time.sleep(100)
     except KeyboardInterrupt:
         sys.exit(0)
 
