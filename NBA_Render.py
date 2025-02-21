@@ -127,7 +127,7 @@ class Render:
                 if game['gameStatusText'] == 'PPD':
                     graphics.DrawText(canvas, self.font, 1, 27, graphics.Color(100, 100, 100), 'Postponed')
             canvas = matrix.SwapOnVSync(canvas)
-            time.sleep(6)
+            time.sleep(3)
             
         return live_games
     def Render_Standings(self):
