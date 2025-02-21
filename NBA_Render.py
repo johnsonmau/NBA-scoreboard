@@ -57,6 +57,12 @@ class Render:
         canvas = matrix.CreateFrameCanvas()
         
         live_games = 0
+
+        image = Image.open('assets/boston.png')
+        image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+        matrix.SetImage(image.convert('RGB'))
+
+        graphics.DrawText(canvas, self.font2, 64 - 2*4,18, graphics.Color(255, 255, 0), "JR")
         
         for game in game_data:
             if game['gameStatus'] == 2:
@@ -98,12 +104,6 @@ class Render:
             graphics.DrawText(canvas, self.font2, 64 - len(str(spread))*4, 18, graphics.Color(0, 0, 200), spread)
            # graphics.DrawText(canvas, self.font, 1, 18, graphics.Color(self.team_colors[hometeam][1][0], self.team_colors[hometeam][1][1], self.team_colors[hometeam][1][2]), hometeam)
             #graphics.DrawText(canvas, self.font, 1, 8, graphics.Color(self.team_colors[awayteam][1][0], self.team_colors[awayteam][1][1], self.team_colors[awayteam][1][2]), awayteam)
-
-            image = Image.open('assets/boston.png')
-            image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
-            matrix.SetImage(image.convert('RGB'))
-
-            graphics.DrawText(canvas, self.font2, 64 - 2*4,18, graphics.Color(255, 255, 0), "JR")
 
             
             if game['gameStatus'] != 1: #run this if the game is live or is final
