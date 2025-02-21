@@ -13,7 +13,7 @@ class NBA_Data:
     
     def JSON_dump(self):
         NBA_FILE_HANDLER().JSON_GAMEDATA(self.game_data, 'DataToday')
-        #with open('/home/pi/Documents/NBAlog.txt', 'a') as file:
+        #with open('/home/mj/Documents/NBAlog.txt', 'a') as file:
         live = False
         later_today = False
         for game in self.game_data:
@@ -30,7 +30,7 @@ class NBA_Data:
             wait_time = (dt.datetime.strptime(next_game, '%Y-%m-%dT%H:%M:%SZ') - dt.datetime.utcnow()).total_seconds()
             string = 'Next game in ' + '{:4.1f}'.format(wait_time/3600) + ' hours.\n'
             print(str(dt.datetime.strftime(dt.datetime.now(), '%m/%d/%Y %H:%M')) + ' - ' + string)
-            with open('/home/pi/Documents/NBAlog.txt', 'a') as file:
+            with open('/home/mj/Documents/NBAlog.txt', 'a') as file:
                 file.write(string)
             #print('Write success')
             try:
@@ -42,7 +42,7 @@ class NBA_Data:
         if live == False and later_today == False: #No more games today, wait until the API updates for the next day
             string = ' - No more games today.'
             print(str(dt.datetime.strftime(dt.datetime.now(), '%m/%d/%Y %H:%M')) + string)
-            #with open('/home/pi/Documents/NBAlog.txt', 'a') as file:
+            #with open('/home/mj/Documents/NBAlog.txt', 'a') as file:
             #    file.write(string)
             time.sleep(3600*2)
             print("")

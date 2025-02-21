@@ -7,7 +7,7 @@ team_ids = {1: 'ATL', 2: 'BOS', 3: 'NO', 4: 'CHI', 5: 'CLE', 6: 'DAL', 7: 'DEN',
 
 class NBA_Standings:
     def __init__ (self):
-        self.path = '/home/pi/NBA-scoreboard/NBAStandings.json'
+        self.path = '/home/mj/NBA-scoreboard/NBAStandings.json'
     
     def Standings(self):
         standings = {'eastern':{}, 'western':{}}
