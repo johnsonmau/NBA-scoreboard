@@ -59,7 +59,7 @@ class Render:
         live_games = 0
 
         image = Image.new('RGB', (64 + 2 * 5, 32))
-        draw = ImageDraw.Draw(self.image)
+        draw = ImageDraw.Draw(image)
 
         logo = Image.open('assets/boston.png')
         logo.thumbnail(40, 30)
