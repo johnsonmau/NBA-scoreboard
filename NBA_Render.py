@@ -64,7 +64,7 @@ class Render:
         logo = Image.open('assets/boston.png')
         logo.thumbnail((40, 30))
         image.paste(logo, (5+1,1))
-        matrix.SetImage(image)
+        matrix.SetImage(logo.convert('RGB'))
 
         graphics.DrawText(canvas, self.font2, 64 - 2*4,18, graphics.Color(255, 255, 0), "JR")
         
@@ -180,6 +180,13 @@ class Render:
 if __name__=='__main__':
     live_prev = 0
     live = Render().Render_Games()
+    while True:
+
+        if live_prev - live > 0:
+            NBA_Standings().Standings()
+        #if live == 0:
+           #Render().Render_Standings()
+        live_prev = live + 0
         
 #/basketball/nba/new-orleans-pelicans-los-angeles-clippers-20210113
 
