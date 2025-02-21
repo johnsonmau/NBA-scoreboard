@@ -15,6 +15,7 @@ class Render:
         self.options.gpio_slowdown = 4
         self.options.rows = 32
         self.options.cols = 64
+        self.options.chain_length = 1
         self.options.drop_privileges = False
         
         
@@ -179,9 +180,9 @@ class Render:
         
 if __name__=='__main__':
     live_prev = 0
-    live = Render().Render_Games()
-    while True:
 
+    while True:
+        live = Render().Render_Games()
         if live_prev - live > 0:
             NBA_Standings().Standings()
         #if live == 0:
