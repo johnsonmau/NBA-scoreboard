@@ -67,66 +67,66 @@ class Render:
 
         graphics.DrawText(canvas, self.font2, 64 - 2*4,18, graphics.Color(255, 255, 0), "JR")
         
-        for game in game_data:
-            if game['gameStatus'] == 2:
-                live_games += 1
-                
-            hometeam = game['homeTeam']['teamTricode']
-            awayteam = game['awayTeam']['teamTricode']
-            
-            home = (game['homeTeam']['teamCity'] + '-' + game['homeTeam']['teamName']).replace(' ', '-').lower()
-            away = (game['awayTeam']['teamCity'] + '-' + game['awayTeam']['teamName']).replace(' ', '-').lower()
-            if home == 'la-clippers':
-                home = 'los-angeles-clippers'
-            if away == 'la-clippers':
-                away = 'los-angeles-clippers'
-            
-            gamelink = r'/basketball/nba/{0}-{1}-{2}'.format(away, home, game['gameCode'][0:game['gameCode'].find(r'/')])
-            print(gamelink)
-
-            try:
-                if disp_live_odds == True and game['gameStatus'] == 2:
-                    spread = spreads_data_live[gamelink]['spread']
-                    over_under = spreads_data_live[gamelink]['over_under']
-                else:
-                    spread = spreads_data[gamelink]['spread']
-                    over_under = spreads_data[gamelink]['over_under']
-            except KeyError:
-                #print('No spreads for this game.')
-                spread = ''
-                over_under = ''
-            
-            for line in range(0,32):
-                graphics.DrawLine(canvas, 0, line, 64, line, graphics.Color(0, 0, 0))
-            
-            for line in range(10,19):
-                graphics.DrawLine(canvas, 0, line, 18, line, graphics.Color(self.team_colors[hometeam][0][0], self.team_colors[hometeam][0][1], self.team_colors[hometeam][0][2]))
-            for line in range(0,9):
-                graphics.DrawLine(canvas, 0, line, 18, line, graphics.Color(self.team_colors[awayteam][0][0], self.team_colors[awayteam][0][1], self.team_colors[awayteam][0][2]))
-            graphics.DrawText(canvas, self.font2, 64 - len(str(over_under))*4, 8, graphics.Color(0, 0, 200), over_under)
-            graphics.DrawText(canvas, self.font2, 64 - len(str(spread))*4, 18, graphics.Color(0, 0, 200), spread)
-           # graphics.DrawText(canvas, self.font, 1, 18, graphics.Color(self.team_colors[hometeam][1][0], self.team_colors[hometeam][1][1], self.team_colors[hometeam][1][2]), hometeam)
-            #graphics.DrawText(canvas, self.font, 1, 8, graphics.Color(self.team_colors[awayteam][1][0], self.team_colors[awayteam][1][1], self.team_colors[awayteam][1][2]), awayteam)
-
-            matrix.SetImage(image)
-            if game['gameStatus'] != 1: #run this if the game is live or is final
-                homescore = game['homeTeam']['score']
-                awayscore = game['awayTeam']['score']
-                graphics.DrawText(canvas, self.font, 21, 8, graphics.Color(100, 100, 100), str(awayscore))
-                graphics.DrawText(canvas, self.font, 21, 18, graphics.Color(100, 100, 100), str(homescore))
-                graphics.DrawText(canvas, self.font, 1, 27, graphics.Color(100, 100, 100), game['gameStatusText'])
-            else:
-                if game['gameStatusText'] != 'PPD':
-                    from_zone = tz.tzutc()
-                    to_zone = tz.tzlocal()
-                    game_time_utc = dt.datetime.strptime(game['gameTimeUTC'], '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=from_zone)
-                    game_time_local = game_time_utc.astimezone(to_zone).strftime('%I:%M %p')
-                    #graphics.DrawText(canvas, self.font, 1, 27, graphics.Color(100, 100, 100), game['gameStatusText'][0:game['gameStatusText'].find('ET')])
-                    graphics.DrawText(canvas, self.font, 1, 27, graphics.Color(100, 100, 100), game_time_local)
-                if game['gameStatusText'] == 'PPD':
-                    graphics.DrawText(canvas, self.font, 1, 27, graphics.Color(100, 100, 100), 'Postponed')
-            canvas = matrix.SwapOnVSync(canvas)
-            time.sleep(6)
+        # for game in game_data:
+        #     if game['gameStatus'] == 2:
+        #         live_games += 1
+        #
+        #     hometeam = game['homeTeam']['teamTricode']
+        #     awayteam = game['awayTeam']['teamTricode']
+        #
+        #     home = (game['homeTeam']['teamCity'] + '-' + game['homeTeam']['teamName']).replace(' ', '-').lower()
+        #     away = (game['awayTeam']['teamCity'] + '-' + game['awayTeam']['teamName']).replace(' ', '-').lower()
+        #     if home == 'la-clippers':
+        #         home = 'los-angeles-clippers'
+        #     if away == 'la-clippers':
+        #         away = 'los-angeles-clippers'
+        #
+        #     gamelink = r'/basketball/nba/{0}-{1}-{2}'.format(away, home, game['gameCode'][0:game['gameCode'].find(r'/')])
+        #     print(gamelink)
+        #
+        #     try:
+        #         if disp_live_odds == True and game['gameStatus'] == 2:
+        #             spread = spreads_data_live[gamelink]['spread']
+        #             over_under = spreads_data_live[gamelink]['over_under']
+        #         else:
+        #             spread = spreads_data[gamelink]['spread']
+        #             over_under = spreads_data[gamelink]['over_under']
+        #     except KeyError:
+        #         #print('No spreads for this game.')
+        #         spread = ''
+        #         over_under = ''
+        #
+        #     for line in range(0,32):
+        #         graphics.DrawLine(canvas, 0, line, 64, line, graphics.Color(0, 0, 0))
+        #
+        #     for line in range(10,19):
+        #         graphics.DrawLine(canvas, 0, line, 18, line, graphics.Color(self.team_colors[hometeam][0][0], self.team_colors[hometeam][0][1], self.team_colors[hometeam][0][2]))
+        #     for line in range(0,9):
+        #         graphics.DrawLine(canvas, 0, line, 18, line, graphics.Color(self.team_colors[awayteam][0][0], self.team_colors[awayteam][0][1], self.team_colors[awayteam][0][2]))
+        #     graphics.DrawText(canvas, self.font2, 64 - len(str(over_under))*4, 8, graphics.Color(0, 0, 200), over_under)
+        #     graphics.DrawText(canvas, self.font2, 64 - len(str(spread))*4, 18, graphics.Color(0, 0, 200), spread)
+        #    # graphics.DrawText(canvas, self.font, 1, 18, graphics.Color(self.team_colors[hometeam][1][0], self.team_colors[hometeam][1][1], self.team_colors[hometeam][1][2]), hometeam)
+        #     #graphics.DrawText(canvas, self.font, 1, 8, graphics.Color(self.team_colors[awayteam][1][0], self.team_colors[awayteam][1][1], self.team_colors[awayteam][1][2]), awayteam)
+        #
+        #     matrix.SetImage(image)
+        #     if game['gameStatus'] != 1: #run this if the game is live or is final
+        #         homescore = game['homeTeam']['score']
+        #         awayscore = game['awayTeam']['score']
+        #         graphics.DrawText(canvas, self.font, 21, 8, graphics.Color(100, 100, 100), str(awayscore))
+        #         graphics.DrawText(canvas, self.font, 21, 18, graphics.Color(100, 100, 100), str(homescore))
+        #         graphics.DrawText(canvas, self.font, 1, 27, graphics.Color(100, 100, 100), game['gameStatusText'])
+        #     else:
+        #         if game['gameStatusText'] != 'PPD':
+        #             from_zone = tz.tzutc()
+        #             to_zone = tz.tzlocal()
+        #             game_time_utc = dt.datetime.strptime(game['gameTimeUTC'], '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=from_zone)
+        #             game_time_local = game_time_utc.astimezone(to_zone).strftime('%I:%M %p')
+        #             #graphics.DrawText(canvas, self.font, 1, 27, graphics.Color(100, 100, 100), game['gameStatusText'][0:game['gameStatusText'].find('ET')])
+        #             graphics.DrawText(canvas, self.font, 1, 27, graphics.Color(100, 100, 100), game_time_local)
+        #         if game['gameStatusText'] == 'PPD':
+        #             graphics.DrawText(canvas, self.font, 1, 27, graphics.Color(100, 100, 100), 'Postponed')
+        #     canvas = matrix.SwapOnVSync(canvas)
+        #     time.sleep(6)
             
         return live_games
     def Render_Standings(self):
