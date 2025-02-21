@@ -96,8 +96,8 @@ class Render:
                 graphics.DrawLine(canvas, 0, line, 18, line, graphics.Color(self.team_colors[awayteam][0][0], self.team_colors[awayteam][0][1], self.team_colors[awayteam][0][2]))
             graphics.DrawText(canvas, self.font2, 64 - len(str(over_under))*4, 8, graphics.Color(0, 0, 200), over_under)
             graphics.DrawText(canvas, self.font2, 64 - len(str(spread))*4, 18, graphics.Color(0, 0, 200), spread)
-            graphics.DrawText(canvas, self.font, 1, 18, graphics.Color(self.team_colors[hometeam][1][0], self.team_colors[hometeam][1][1], self.team_colors[hometeam][1][2]), hometeam)
-            graphics.DrawText(canvas, self.font, 1, 8, graphics.Color(self.team_colors[awayteam][1][0], self.team_colors[awayteam][1][1], self.team_colors[awayteam][1][2]), awayteam)
+           # graphics.DrawText(canvas, self.font, 1, 18, graphics.Color(self.team_colors[hometeam][1][0], self.team_colors[hometeam][1][1], self.team_colors[hometeam][1][2]), hometeam)
+            #graphics.DrawText(canvas, self.font, 1, 8, graphics.Color(self.team_colors[awayteam][1][0], self.team_colors[awayteam][1][1], self.team_colors[awayteam][1][2]), awayteam)
 
             image = Image.open('assets/boston.png')
             image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
