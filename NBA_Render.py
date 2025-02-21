@@ -62,7 +62,7 @@ class Render:
         draw = ImageDraw.Draw(image)
 
         logo = Image.open('assets/boston.png')
-        logo.thumbnail(40, 30)
+        logo.thumbnail((40, 30))
         image.paste(logo, (5+1,1))
 
         graphics.DrawText(canvas, self.font2, 64 - 2*4,18, graphics.Color(255, 255, 0), "JR")
