@@ -108,7 +108,7 @@ class Render:
            # graphics.DrawText(canvas, self.font, 1, 18, graphics.Color(self.team_colors[hometeam][1][0], self.team_colors[hometeam][1][1], self.team_colors[hometeam][1][2]), hometeam)
             #graphics.DrawText(canvas, self.font, 1, 8, graphics.Color(self.team_colors[awayteam][1][0], self.team_colors[awayteam][1][1], self.team_colors[awayteam][1][2]), awayteam)
 
-            matrix.setImage(image)
+            matrix.SetImage(image)
             if game['gameStatus'] != 1: #run this if the game is live or is final
                 homescore = game['homeTeam']['score']
                 awayscore = game['awayTeam']['score']
