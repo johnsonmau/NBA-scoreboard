@@ -183,7 +183,7 @@ if __name__=='__main__':
         live = Render().Render_Games()
         if live_prev - live > 0:
             NBA_Standings().Standings()
-        if live == 0:
+        #if live == 0:
            #Render().Render_Standings()
         live_prev = live + 0 
         
