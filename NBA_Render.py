@@ -6,7 +6,7 @@ import time
 import sys
 from NBA_Standings import NBA_Standings
 from dateutil import tz
-from PIL import Image
+from PIL import Image, ImageDraw
 
 class Render:
     def __init__(self):
@@ -58,9 +58,12 @@ class Render:
         
         live_games = 0
 
-        image = Image.open('assets/boston.png')
-        image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
-        matrix.SetImage(image.convert('RGB'))
+        image = Image.new('RGB', (64 + 2 * 5, 32))
+        draw = ImageDraw.Draw(self.image)
+
+        logo = Image.open('assets/boston.png')
+        logo.thumbnail(40, 30)
+        image.paste(logo, (5+1,1))
 
         graphics.DrawText(canvas, self.font2, 64 - 2*4,18, graphics.Color(255, 255, 0), "JR")
         
