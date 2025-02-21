@@ -6,6 +6,7 @@ import time
 import sys
 from NBA_Standings import NBA_Standings
 from dateutil import tz
+from PIL import Image
 
 class Render:
     def __init__(self):
@@ -97,6 +98,11 @@ class Render:
             graphics.DrawText(canvas, self.font2, 64 - len(str(spread))*4, 18, graphics.Color(0, 0, 200), spread)
             graphics.DrawText(canvas, self.font, 1, 18, graphics.Color(self.team_colors[hometeam][1][0], self.team_colors[hometeam][1][1], self.team_colors[hometeam][1][2]), hometeam)
             graphics.DrawText(canvas, self.font, 1, 8, graphics.Color(self.team_colors[awayteam][1][0], self.team_colors[awayteam][1][1], self.team_colors[awayteam][1][2]), awayteam)
+
+            image = Image.open('assets/boston.png')
+            image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+            matrix.SetImage(image.convert('RGB'))
+
             graphics.DrawText(canvas, self.font2, 64 - 2*4,18, graphics.Color(255, 255, 0), "JR")
 
             
