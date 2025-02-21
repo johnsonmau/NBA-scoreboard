@@ -65,7 +65,7 @@ class Render:
         logo = Image.open('assets/boston.png')
         logo.thumbnail((matrix.width, matrix.height), Image.Resampling.LANCZOS)
         image.paste(logo, (5+1,1))
-        matrix.SetImage(logo.convert('RGB'))
+        matrix.SetImage(logo.convert('RGBA'))
 
         graphics.DrawText(canvas, self.font2, 64 - 2*4,18, graphics.Color(255, 255, 0), "JR")
         
