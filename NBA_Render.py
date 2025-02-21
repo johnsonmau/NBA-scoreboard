@@ -179,13 +179,7 @@ class Render:
         
 if __name__=='__main__':
     live_prev = 0
-    while True:
-        live = Render().Render_Games()
-        if live_prev - live > 0:
-            NBA_Standings().Standings()
-        #if live == 0:
-           #Render().Render_Standings()
-        live_prev = live + 0 
+    live = Render().Render_Games()
         
 #/basketball/nba/new-orleans-pelicans-los-angeles-clippers-20210113
 
