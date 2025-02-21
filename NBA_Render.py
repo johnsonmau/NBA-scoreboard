@@ -62,7 +62,7 @@ class Render:
         draw = ImageDraw.Draw(image)
 
         logo = Image.open('assets/boston.png')
-        logo.thumbnail((40, 30))
+        logo.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
         image.paste(logo, (5+1,1))
         matrix.SetImage(logo.convert('RGB'))
 
